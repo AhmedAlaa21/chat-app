@@ -9,9 +9,18 @@ import {
 } from "@mui/material";
 import React from "react";
 import { useTheme } from "@mui/material/styles";
-import { Bell, CaretRight, Phone, Prohibit, Star, Trash, VideoCamera, X } from "phosphor-react";
+import {
+  Bell,
+  CaretRight,
+  Phone,
+  Prohibit,
+  Star,
+  Trash,
+  VideoCamera,
+  X,
+} from "phosphor-react";
 import { useDispatch } from "react-redux";
-import { ToggleSidebar } from "./redux/slices/app";
+import { ToggleSidebar, UpdateSidebarType } from "./redux/slices/app";
 import { faker } from "@faker-js/faker";
 import AntSwitch from "./AntSwitch";
 const Contact = () => {
@@ -108,7 +117,14 @@ const Contact = () => {
             justifyContent={"space-between"}
           >
             <Typography variant="subtitle2">Media, Links & Docs</Typography>
-            <Button endIcon={<CaretRight />}>401</Button>
+            <Button
+              onClick={() => {
+                dispatch(UpdateSidebarType("SHARED"));
+              }}
+              endIcon={<CaretRight />}
+            >
+              401
+            </Button>
           </Stack>
           <Stack direction={"row"} spacing={2} alignItems={"center"}>
             {[1, 2, 3].map((el) => (
@@ -127,7 +143,11 @@ const Contact = () => {
               <Star size={20} />
               <Typography variant="subtitle2">Starred Messages</Typography>
             </Stack>
-            <IconButton>
+            <IconButton
+              onClick={() => {
+                dispatch(UpdateSidebarType("STARRED"));
+              }}
+            >
               <CaretRight />
             </IconButton>
           </Stack>
@@ -154,11 +174,11 @@ const Contact = () => {
               </Typography>
             </Stack>
           </Stack>
-          <Stack direction = "row" alignItems={"center"} spacing={2}>
-            <Button startIcon = {<Prohibit />} fullWidth variant="outlined">
+          <Stack direction="row" alignItems={"center"} spacing={2}>
+            <Button startIcon={<Prohibit />} fullWidth variant="outlined">
               Block
             </Button>
-            <Button startIcon = {<Trash />} fullWidth variant="outlined">
+            <Button startIcon={<Trash />} fullWidth variant="outlined">
               Delete
             </Button>
           </Stack>
