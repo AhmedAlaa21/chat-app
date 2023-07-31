@@ -1,21 +1,11 @@
-import {
-  Box,
-  Grid,
-  IconButton,
-  Stack,
-  Tab,
-  Tabs,
-  Typography,
-} from "@mui/material";
+import { Box, IconButton, Stack, Typography } from "@mui/material";
 import { CaretLeft } from "phosphor-react";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { UpdateSidebarType } from "./redux/slices/app";
 import { useTheme } from "@mui/material/styles";
-import { useState } from "react";
-import { faker } from "@faker-js/faker";
-import { SHARED_DOCS, SHARED_LINKS } from "../data";
-import { LinkMsg, DocMsg } from "./Conversation/MsgTypes";
+
+import Message from "./Conversation/Message";
 const StarredMessages = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
@@ -60,10 +50,12 @@ const StarredMessages = () => {
           }}
           p={3}
           spacing={3}
-        ></Stack>
+        >
+          <Message />
+        </Stack>
       </Stack>
     </Box>
   );
 };
 
-export default SharedMessages;
+export default StarredMessages;

@@ -98,6 +98,7 @@ const SharedMessages = () => {
               case 2:
                 //Docs.
                 return SHARED_DOCS.map((el) => <DocMsg el={el} />);
+                default : break;
             }
           })()}
         </Stack>

@@ -12,11 +12,16 @@ import React from "react";
 import { useTheme } from "@mui/material/styles";
 import { DotsThreeVertical, DownloadSimple, Image } from "phosphor-react";
 import { Message_options } from "../../data";
-const DocMsg = ({ el }) => {
+
+const DocMsg = ({ el, menu }) => {
   const theme = useTheme();
 
   return (
-    <Stack direction={"row"} justifyContent={el.incoming ? "start" : "end"}>
+    <Stack
+      direction={"row"}
+      alignItems={"center"}
+      justifyContent={el.incoming ? "start" : "end"}
+    >
       <Box
         p={1.5}
         sx={{
@@ -52,16 +57,20 @@ const DocMsg = ({ el }) => {
           </Typography>
         </Stack>
       </Box>
-      <MessageOptions />
+      {menu && <MessageOptions />}
     </Stack>
   );
 };
 
-const LinkMsg = ({ el }) => {
+const LinkMsg = ({ el, menu }) => {
   const theme = useTheme();
 
   return (
-    <Stack direction={"row"} justifyContent={el.incoming ? "start" : "end"}>
+    <Stack
+      direction={"row"}
+      alignItems={"center"}
+      justifyContent={el.incoming ? "start" : "end"}
+    >
       <Box
         p={1.5}
         sx={{
@@ -107,16 +116,20 @@ const LinkMsg = ({ el }) => {
           </Stack>
         </Stack>
       </Box>
-      <MessageOptions />
+      {menu && <MessageOptions />}
     </Stack>
   );
 };
 
-const ReplyMsg = ({ el }) => {
+const ReplyMsg = ({ el, menu }) => {
   const theme = useTheme();
 
   return (
-    <Stack direction={"row"} justifyContent={el.incoming ? "start" : "end"}>
+    <Stack
+      direction={"row"}
+      alignItems={"center"}
+      justifyContent={el.incoming ? "start" : "end"}
+    >
       <Box
         p={1.5}
         sx={{
@@ -150,16 +163,20 @@ const ReplyMsg = ({ el }) => {
           </Typography>
         </Stack>
       </Box>
-      <MessageOptions />
+      {menu && <MessageOptions />}
     </Stack>
   );
 };
 
-const MediaMsg = ({ el }) => {
+const MediaMsg = ({ el, menu }) => {
   const theme = useTheme();
 
   return (
-    <Stack direction={"row"} justifyContent={el.incoming ? "start" : "end"}>
+    <Stack
+      alignItems={"center"}
+      direction={"row"}
+      justifyContent={el.incoming ? "start" : "end"}
+    >
       <Box
         p={1.5}
         sx={{
@@ -187,12 +204,12 @@ const MediaMsg = ({ el }) => {
           </Typography>
         </Stack>
       </Box>
-      <MessageOptions />
+      {menu && <MessageOptions />}
     </Stack>
   );
 };
 
-const TextMsg = ({ el }) => {
+const TextMsg = ({ el, menu }) => {
   const theme = useTheme();
 
   return (
@@ -218,7 +235,7 @@ const TextMsg = ({ el }) => {
           {el.message}
         </Typography>
       </Box>
-      <MessageOptions />
+      {menu && <MessageOptions />}
     </Stack>
   );
 };
