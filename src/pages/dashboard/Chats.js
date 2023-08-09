@@ -1,106 +1,22 @@
-import styled from "@emotion/styled";
+import React from "react";
 import {
-  Avatar,
   Box,
   Button,
   IconButton,
   Stack,
   Typography,
   Divider,
-  Badge,
 } from "@mui/material";
 import { SimpleBarStyle } from "../../components/Scrollbar";
 import { ArchiveBox, CircleDashed, MagnifyingGlass } from "phosphor-react";
-import React from "react";
-import { faker } from "@faker-js/faker";
 import { ChatList } from "../../data";
-import { useTheme } from "@emotion/react";
+import { useTheme } from "@mui/material/styles";
 import {
   Search,
   SearchIconWrapper,
   StyledInputBase,
 } from "../../components/Search";
-
-const ChatElement = ({ id, name, img, msg, time, unread, online }) => {
-  const theme = useTheme();
-  return (
-    <Box
-      sx={{
-        width: "100%",
-        borderRadius: 1,
-        backgroundColor:
-          theme.palette.mode === "light"
-            ? "#f8faff"
-            : theme.palette.background.default,
-      }}
-      p={1}
-    >
-      <Stack
-        direction="row"
-        alignItems={"center"}
-        justifyContent={"space-between"}
-      >
-        <Stack direction={"row"} spacing={2}>
-          {online ? (
-            <StyledBadge
-              overlap="circular"
-              variant="dot"
-              anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-            >
-              <Avatar src={faker.image.avatar()} />
-            </StyledBadge>
-          ) : (
-            <Avatar src={faker.image.avatar()} />
-          )}
-
-          <Stack spacing={0.3}>
-            <Typography variant="subtitle2">{name}</Typography>
-            <Typography variant="caption">{msg}</Typography>
-          </Stack>
-        </Stack>
-        <Stack spacing={2} alignItems={"center"}>
-          <Typography
-            sx={{
-              fontWeight: 600,
-            }}
-          >
-            {time}
-          </Typography>
-          <Badge color="primary" badgeContent={unread} />
-        </Stack>
-      </Stack>
-    </Box>
-  );
-};
-
-const StyledBadge = styled(Badge)(({ theme }) => ({
-  "& .MuiBadge-badge": {
-    backgroundColor: "#44b700",
-    color: "#44b700",
-    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
-    "&::after": {
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      borderRadius: "50%",
-      animation: "ripple 1.2s infinite ease-in-out",
-      border: "1px solid currentColor",
-      content: '""',
-    },
-  },
-  "@keyframes ripple": {
-    "0%": {
-      transform: "scale(.8)",
-      opacity: 1,
-    },
-    "100%": {
-      transform: "scale(2.4)",
-      opacity: 0,
-    },
-  },
-}));
+import ChatElement from "../../components/ChatElement";
 
 const Chats = () => {
   const theme = useTheme();
@@ -147,7 +63,7 @@ const Chats = () => {
           direction={"column"}
           sx={{ flexGrow: 1, overflowY: "auto", height: "50%" }}
         >
-          <SimpleBarStyle timeout={200} clickOnTrack={false}>
+          {/* <SimpleBarStyle timeout={200} clickOnTrack={false}> */}
             <Stack spacing={2.4}>
               <Typography
                 variant="subtitle2"
@@ -174,7 +90,7 @@ const Chats = () => {
                 return <ChatElement {...el} />;
               })}
             </Stack>
-          </SimpleBarStyle>
+          {/* </SimpleBarStyle> */}
         </Stack>
       </Stack>
     </Box>

@@ -269,7 +269,7 @@ const Contact = () => {
         <BlockDialog open={openBlock} handleClose={handleCloseBlock} />
       )}
       {openDelete && (
-        <BlockDialog open={openDelete} handleClose={handleCloseDelete} />
+        <DeleteDialog open={openDelete} handleClose={handleCloseDelete} />
       )}
     </Box>
   );
